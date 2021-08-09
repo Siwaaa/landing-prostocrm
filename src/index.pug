@@ -1,0 +1,39 @@
+doctype html
+html(lang="ru")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(name="description", content="Систематизация продаж в бизнесе с Битрикс24. Внедрите нашу CRM-системы и за 3 месяца увеличьте прибыль вашей компании на 36% и более")
+    meta(name="keywords", content="Битрикс24, систематизация продаж, создание системы маркетинга, ")
+    link(rel="icon", href="assets/favicon.ico", type="image/x-icon")
+
+    link(rel="stylesheet", href="css/main.css")
+    link(rel="stylesheet", href="css/swiper-bundle.min.css")
+
+    title Агентство по подбору персонала
+  body
+    include _header.pug
+    include _quiz.pug
+    include _podbors.pug
+    include _understand.pug
+    include _steps.pug
+    include _facts.pug
+    include _partners.pug
+    //- include _otzovy.pug
+    include _forma.pug
+    include _maps.pug
+    include _footer.pug
+    include _modal.pug
+    
+    +modal('modal-1', {
+      title: 'Найти специалиста себе в команду от HR  с 17-летним опытом',
+      type: 'form',
+    })
+
+    //- JS
+    //- script(src='js/index.js')
+    //- script(src='js/parallax.min.js')
+    //- script(src='js/parallax.js')
+    //- script(src='js/swiper-bundle.min.js')
+    //- script(src='js/swiper.js')
