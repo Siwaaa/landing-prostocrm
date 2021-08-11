@@ -11,6 +11,10 @@ header.header
           a(href="#") Тарифы
         li
           a(href="#") Кейсы
+      .navbar__burger 
+        input(type="checkbox" name="burger" id="burger")
+        label(for="burger")
+          .burger__icon
       a(href="tel:+375297724825") 375 29 <b>&nbsp772-48-25</b>
 
     .header__body 
@@ -28,7 +32,11 @@ header.header
           .header__privileges-item
             img(src="./img/icon-h-3.svg")
             p <b>Создание</b> <br> системы маркетинга
-
+        .header__body-left--mob 
+          img(src="./img/expert.png", alt="Андрей Лапухин")
+          .header-parallax.parallax-scene
+            div(class="header-parallax__item" data-depth="0.50")
+              img(src="./img/plashka_header.svg", alt="")
         button(type="button" class="btn btn-main") Консультация с экспертом
       .header__body-right 
         img(src="./img/expert.png", alt="Андрей Лапухин")
