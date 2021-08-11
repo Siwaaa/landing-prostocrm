@@ -7,10 +7,10 @@ const swiper = new Swiper('.cases__swiper', {
   grabCursor: true,
   pagination: {
     el: '.cases-pagination',
-    type: 'bullets',
+    type: 'bullets'
   },
   navigation: {
     prevEl: ".cases__prev",
-    nextEl: ".cases__next",
-  },
+    nextEl: ".cases__next"
+  }
 });

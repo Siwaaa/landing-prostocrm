@@ -9,6 +9,7 @@ const htmlmin = require('gulp-htmlmin')
 const include = require('gulp-file-include')
 const babel = require('gulp-babel')
 const replace = require('gulp-replace')
+const rename = require('gulp-rename');
 const del = require('del')
 const sync = require('browser-sync')
 const imagemin = require('gulp-imagemin')
@@ -18,18 +19,6 @@ const postcssCustomMedia = require('postcss-custom-media');
 
 // HTML
 
-function html() {
-  return src('src/*.html') 
-    .pipe(include({
-      prefix: '@'
-    }))
-    .pipe(htmlmin({
-      removeComments: true,
-      collapseWhitespace: true
-    }))
-    .pipe(dest('build'))
-    .pipe(sync.stream())
-}
 function htmlPug() {
   return src(['src/index.pug', 'src/thanks.pug'])
     .pipe(pug())
@@ -40,8 +29,11 @@ function htmlPug() {
 const plagins = [nested, postcssCustomMedia, autoPrefixer({overrideBrowserslist: ['last 3 version']}), ccsnano]
 
 function styles() {
-  return src('src/css/*.css')
+  return src('src/css/*.pcss')
     .pipe(postCss(plagins))
+    .pipe(rename({
+      extname: '.css'
+    }))
     .pipe(dest('build/css/'))
     .pipe(sync.stream())
 }
@@ -86,9 +78,8 @@ function serve() {
     server: './build'
   })
 
-  // watch(['src/*.html', 'src/blocks/*.html'], html)
   watch(['src/*.pug'], htmlPug)
-  watch('src/css/*.css', styles)
+  watch('src/css/*.pcss', styles)
   watch('src/js/*.js', scripts)
 }
 
