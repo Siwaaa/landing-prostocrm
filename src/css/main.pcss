@@ -167,6 +167,10 @@ textarea::placeholder {
       height: 20px;
       background: url(../img/btn-strelka.svg) center/contain no-repeat;
 
+      @media (--sm) {
+        display: none;
+      }
+
       animation-name: blink;
       animation-timing-function: linear;
       animation-duration: 3s;
@@ -175,10 +179,15 @@ textarea::placeholder {
     &::after {
       right: 5%;
       transform: scale(-1);
-
+      @media (--md) {
+        right: 10px;
+      }
     }
     &::before {
       left: 5%;
+      @media (--md) {
+        left: 10px;
+      }
     }
   }
 } 
@@ -414,6 +423,10 @@ textarea::placeholder {
         line-height: 1.4;
         margin-top: 80px;
         margin-bottom: 25px;
+
+        @media (--sm) {
+          margin-top: 50px;
+        }
         
         & > b {
           font-weight: 700;
@@ -429,6 +442,9 @@ textarea::placeholder {
 
           @media (--lg) {
             width: 38%;
+          }
+          @media (--xs) {
+            width: 43%;
           }
         }
       }
@@ -527,6 +543,10 @@ textarea::placeholder {
   &__container {
     padding-top: calc(var(--container-padding) * 2);
     padding-bottom: var(--container-padding);
+
+    @media (--sm) {
+      padding-top: var(--container-padding);
+    }
   }
 
   &__head {
