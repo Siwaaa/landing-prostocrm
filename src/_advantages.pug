@@ -15,6 +15,16 @@ section.advantages
       h2 Внедрение нашей CRM-системы, способно <b>за 3 месяца увеличить прибыль вашей компании на 36% и более</b> 
     .advantages__body 
       each val, index in dataItem 
-        .advantages__body-item 
+        div(class="advantages__body-item" data-animate-on-scroll)
           img(src=`./img/icon-a-${index+1}.png`)
           p!= val
+    .advantages__body--swiper.swiper-container
+      .swiper-wrapper
+        each val, index in dataItem 
+          .advantages__body-item.swiper-slide
+            img(src=`./img/icon-a-${index+1}.png`)
+            p!= val
+      .advantages__nav 
+        .advantages__nav-prev.sw__prev
+        .advantages__nav-pagination
+        .advantages__nav-next.sw__next

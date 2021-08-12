@@ -13,7 +13,7 @@ section.steps
       h2 <b>Мы занимаемся созданием и внедрением</b> CRM-системы Битрикс24 на любом этапе 
     .steps__body 
       each item, index in steps 
-        .steps__body-item 
+        div(class="steps__body-item" data-animate-on-scroll)
           h4= `0${index+1}`
           p!= item
-      button(type="button" class="btn btn-main") заказать настройку
+      button(type="button" class="btn btn-main btn--strelki") заказать настройку

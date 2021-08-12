@@ -1,22 +1,44 @@
-// const tarifsPozniza = [
-//   {
-//     head: {
-//       name: 'Базовый',
-//       desc: 'Для организации работы всей вашей компании',
-//     },
-//     conditions: {
-//       users: 5,
-//       price: 149,
-//       btn: 3,
-//       size: '5 Гб'
-//     }
-//     ul: {
+// Scroll to #
 
-//     }
-   
+const anchors = document.querySelectorAll('a[href*="#"]')
 
-//   },
-// ]
-// const tarifOPT = [
-//   {},
-// ]
+for (let anchor of anchors) {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault()
+    
+    const blockID = anchor.getAttribute('href').substr(1)
+    
+    document.getElementById(blockID).scrollIntoView({
+      behavior: 'smooth',
+    })
+  })
+}
+
+// Animation
+
+const e = document.querySelectorAll("[data-animate-on-scroll]")
+const t = new IntersectionObserver((e=>{
+  e.forEach((e=>{
+    e.isIntersecting && e.target.setAttribute("data-animate-on-scroll", "animated")
+  }
+  ))
+}),{
+  threshold: 0.25
+});
+
+e.forEach((e=>{
+  t.observe(e)
+}
+))
+
+// BURGER OM-NOM-NOM
+const burgerBtn = document.querySelector('#burger')
+const navbarMenu = document.querySelector('.navbar__menu')
+
+burgerBtn.addEventListener('change', function() {
+  if (this.checked) {
+    navbarMenu.style.height = '196px'
+  } else {
+    navbarMenu.style.height = '0'
+  }
+})

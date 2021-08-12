@@ -16,9 +16,20 @@ header.header
         label(for="burger")
           .burger__icon
       a(href="tel:+375297724825") 375 29 <b>&nbsp772-48-25</b>
+      .navbar__menu
+        ul
+          li
+            a(href="#") Стоимость системы
+          li
+            a(href="#") Внедрение
+          li
+            a(href="#") Тарифы
+          li
+            a(href="#") Кейсы
+
 
     .header__body 
-      .header__body-left 
+      div(class="header__body-left" data-animate-on-scroll)
         h1 <b>Получите инструмент по систематизации продаж в своём бизнесе с</b>
         .desc 
           p За 6 часов внедрим систему, которая позволит <b>автоматизировать работу и увеличить прибыль вашей компании</b>
@@ -37,8 +48,8 @@ header.header
           .header-parallax.parallax-scene
             div(class="header-parallax__item" data-depth="0.50")
               img(src="./img/plashka_header.svg", alt="")
-        button(type="button" class="btn btn-main") Консультация с экспертом
-      .header__body-right 
+        button(type="button" class="btn btn-main btn--strelki") Консультация с экспертом
+      div(class="header__body-right" data-animate-on-scroll)
         img(src="./img/expert.png", alt="Андрей Лапухин")
         .header-parallax.parallax-scene
           div(class="header-parallax__item" data-depth="0.50")

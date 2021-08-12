@@ -89,6 +89,11 @@ textarea::placeholder {
   line-height: 1.4;
   margin-bottom: 80px;
 
+  @media (--sm) {
+    margin-bottom: 55px;
+    text-align: center;
+  }  
+
   & > span {
     display: inline-block;
     font-size: var(--fz-head-span);
@@ -108,20 +113,22 @@ textarea::placeholder {
   }
 }
 .btn {
+  --fz-btn: 14px;
   display: inline-block;
   font-weight: 600;
-  line-height: 1.5;
+  line-height: 1;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   padding: 35px 80px;
   border-radius: var(--border-radius);
   font-size: var(--fz-btn);
-  transition: transform .3s ease-in-out;
+  transition: all .3s ease-in-out;
 
   @media (--lg) {
     padding: 30px 68px;
   }
   @media (--md) {
+    --fz-btn: 12px;
     padding: 30px 58px;
   }
   @media (--sm) {
@@ -129,7 +136,7 @@ textarea::placeholder {
   }
 
   &:hover {
-    transform: scale(1.05);
+    opacity: 0.8;
   }
 
   &-main {
@@ -138,14 +145,42 @@ textarea::placeholder {
     text-shadow: 0px 1px 0px rgba(231, 217, 45, 0.49);
   
     &:active {
-      transform: scale(1);
-      background: #D31027;
+      transform: scale(0.95);
     }
   }
   &--mini {
     font-size: 12px;
     padding: 15px 35px;
   } 
+
+  &--strelki {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+
+    &::after, &::before {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      width: 40px;
+      height: 20px;
+      background: url(../img/btn-strelka.svg) center/contain no-repeat;
+
+      animation-name: blink;
+      animation-timing-function: linear;
+      animation-duration: 3s;
+      animation-iteration-count: infinite;
+    }
+    &::after {
+      right: 5%;
+      transform: scale(-1);
+
+    }
+    &::before {
+      left: 5%;
+    }
+  }
 } 
 
 .input {
@@ -173,6 +208,7 @@ textarea::placeholder {
     
 
     & .navbar {
+      position: relative;
       height: 100px;
       display: flex;
       align-items: center;
@@ -207,16 +243,18 @@ textarea::placeholder {
           align-items: center;
           justify-content: center;
           height: 100%;
+          transition: all .3s ease-in-out;
 
           &:hover {
             border-bottom: 1px solid var(--black);
-            & a {
+            & > a {
               color: var(--black);
             }
           }
           & > a {
             padding: 40px 0;
             color: #666666;
+            transition: all .3s ease-in-out;
           }
         }
 
@@ -232,6 +270,7 @@ textarea::placeholder {
         align-items: center;
         font-size: var(--fz-tel);
         color: var(--black);
+        transition: all .3s ease-in-out;
 
         &::before {
           content: "";
@@ -240,6 +279,10 @@ textarea::placeholder {
           height: 20px;
           background: url(../img/tel.svg) center no-repeat;
           margin-right: 15px;
+        }
+
+        &:hover {
+          opacity: 0.8;
         }
       }
       &__burger {
@@ -312,6 +355,44 @@ textarea::placeholder {
             }
           }
         }
+      }
+      &__menu {
+        display: none;
+        @media (--lg) {
+          display: block;
+          position: absolute;
+          top: 100%;
+          width: 100%;
+          background-color: #F5F5F6;
+          border-radius: 5px;
+          z-index: 100;
+          height: 0;
+          opacity: 1;
+          transition: 0.5s;
+          transition-delay: 0.2s;
+          overflow: hidden;
+        }
+
+        & > ul {
+          display: flex;
+          align-items: flex-start;
+          justify-content: center;
+          flex-direction: column;
+          height: 100%;
+          padding: 30px;
+  
+          & > li {
+            & > a {
+              color: #666666;
+              transition: all .3s ease-in-out;
+            }
+          }
+  
+          & > *:not(:last-child) {
+            margin-bottom: 20px;
+          }
+        }
+
       }
     }
   }
@@ -450,6 +531,9 @@ textarea::placeholder {
 
   &__head {
     width: 75%;
+    @media (--sm) {
+      width: 100%;
+    }
   }
 
   &__marquiz {
@@ -468,6 +552,9 @@ textarea::placeholder {
 
   &__head {
     width: 75%;
+    @media (--sm) {
+      width: 100%;
+    }
   }
 
   &__body {
@@ -476,12 +563,25 @@ textarea::placeholder {
     gap: 40px;
     padding-top: 60px;
 
+    @media (--lg) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (--sm) {
+      grid-template-columns: repeat(1, 1fr);
+      gap: 70px;
+    }
+
     &-item {
       position: relative;
       padding: 90px 30px 30px;
       background: #F5F5F6;
       border-radius: 5px;
       line-height: 1.5;
+      transition: all .5s ease-in-out;
+
+      @media (--sm) {
+        padding: 60px 30px 30px;
+      }
 
       & h3 {
         font-weight: 600;
@@ -501,6 +601,10 @@ textarea::placeholder {
         display: inline-block;
         width: 120px;
         height: 120px;
+        @media (--sm) {
+          width: 100px;
+          height: 100px;
+        }
       }
       &:nth-child(1)::after {
         background: url(../img/icon-sys-1.png) center/contain no-repeat;
@@ -510,6 +614,9 @@ textarea::placeholder {
       }
       &:nth-child(3)::after {
         background: url(../img/icon-sys-3.png) center/contain no-repeat;
+      }
+      &:hover {
+        box-shadow: 0px 3px 10px rgba(34, 34, 34, 0.2);
       }
     }
   }
@@ -523,6 +630,9 @@ textarea::placeholder {
 
   &__head {
     width: 82%;
+    @media (--sm) {
+      width: 100%;
+    }
   }
 
   &__body {
@@ -530,7 +640,13 @@ textarea::placeholder {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 1fr);
     gap: 40px 60px;
-    padding-top: 60px;
+    @media (--lg) {
+      grid-template-columns: repeat(1, 1fr);
+      grid-template-rows: auto;
+    }
+    @media (--xs) {
+      display: none;
+    }
 
     &-item {
       --padding-g: 40px;
@@ -539,6 +655,7 @@ textarea::placeholder {
       border-radius: 5px;
       line-height: 1.5;
       overflow: hidden;
+      transition: all 0.5s ease-in-out;
 
       & > p {
         font-size: var(--fz-18);
@@ -550,6 +667,66 @@ textarea::placeholder {
         height: 120px;
         object-fit: contain;
         margin-left: var(--padding-g);
+
+        @media (--lg) {
+          width: 100px;
+          height: 100px;
+        }
+        @media (--xs) {
+          width: 120px;
+          height: 120px;
+        }
+      }
+      &:hover {
+        background: #FFE200;
+      }
+    }
+
+    &--swiper {
+      display: none;
+      @media (--xs) {
+        display: block;
+      }
+
+      & .advantages__body-item {
+        flex-direction: column-reverse;
+        align-items: center;
+        text-align: center;
+        height: auto;
+
+        & > img {
+          align-self: center;
+          margin-left: 0;
+        }
+      }
+      & .advantages__nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 40px;
+        margin-top: 20px;
+        &-prev, &-next {
+          position: relative;
+          width: 39px;
+          height: 39px;
+        }
+        &-pagination {
+          & > .swiper-pagination-bullet {
+            width: 8px;
+            height: 8px;
+            opacity: 1;
+            background-color: #EAEAEA;
+            margin-right: 10px;
+      
+            &:first-child {
+              margin-left: 10px;
+            }
+            &-active {
+              background: linear-gradient(180deg, #FFEF00 0%, #FFE200 100%);
+            }
+          }
+        }
+
       }
     }
   }
@@ -566,6 +743,9 @@ textarea::placeholder {
 
   &__head {
     width: 55%;
+    @media (--sm) {
+      width: 100%;
+    }
   }
 
   &__body {
@@ -575,12 +755,22 @@ textarea::placeholder {
     grid-template-rows: repeat(3, 1fr);
     gap: 20px 40px;
     padding-top: 40px;
+    @media (--md) {
+      grid-template-columns: 1fr;
+      grid-auto-flow: row;
+      grid-template-rows: auto;
+    }
 
     &-item {
       display: flex;
       align-items: center;
       line-height: 1.5;
       overflow: hidden;
+
+      @media (--sm) {
+        text-align: center;
+        flex-direction: column;
+      }
 
       & > p {
         font-size: var(--fz-18);
@@ -590,7 +780,26 @@ textarea::placeholder {
         font-size: 100px;
         color: #DDDFE0;
         margin-right: 40px;
+
+        @media (--lg) {
+          font-size: 80px;
+          margin-right: 20px;
+        }
+        @media (--sm) {
+          margin-bottom: 20px;
+          line-height: 1;
+        }
       }
+    }
+    & > .btn {
+      height: min-content;
+      display: flex;
+      justify-content: center;
+      align-self: center;
+      @media (--sm) {
+        margin-top: 40px;
+      }
+      
     }
   }
 }
@@ -603,6 +812,9 @@ textarea::placeholder {
 
   &__head {
     width: 88%;
+    @media (--sm) {
+      width: 100%;
+    }
   }
 
   &__body {
@@ -610,6 +822,10 @@ textarea::placeholder {
       font-weight: 600;
       font-size: var(--fz);
       margin-bottom: 30px;
+
+      @media (--sm) {
+        text-align: center;
+      }
     }
 
     & .rozniza {
@@ -617,6 +833,16 @@ textarea::placeholder {
         width: 24%;
         border-radius: 5px;
         background: #F5F5F6;
+        &.accent {
+          background: #EBF1F8;
+  
+          & > .rozniza__head {
+            background: #FFC800;
+          }
+          & .btn-main {
+            background: #FFC800;
+          }
+        }
       }
 
       &__head {
@@ -624,6 +850,10 @@ textarea::placeholder {
         text-align: center;
         border-radius: 5px 5px 0 0;
         background-color: var(--yelow);
+        overflow: hidden;
+        @media (--xl) {
+          padding: 30px 10px;
+        }
         & > h3 {
           font-weight: 700;
           font-size: var(--fz-h3);
@@ -726,7 +956,7 @@ textarea::placeholder {
               display: inline-block;
               width: 20px;
               height: 20px;
-              background: url(../img/ok.svg) center no-repeat;
+              background: url(../img/ok.svg) center/contain no-repeat;
             }
 
             &.off {
@@ -744,6 +974,70 @@ textarea::placeholder {
     display: flex;
     justify-content: space-between;
     margin-bottom: 60px;
+
+    @media (--xl) {
+      display: none;
+    }
+    &--swiper {
+      display: none;
+      @media (--xl) {
+        display: block;
+      }
+      & .rozniza__nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 40px;
+        
+        &-prev, &-next {
+          position: relative;
+          height: 40px;
+          width: 40px;
+        }
+        &-pagination {
+          display: flex;
+          justify-content: center;
+          & > .swiper-pagination-bullet {
+            width: 12px;
+            height: 12px;
+            opacity: 1;
+            background-color: #EAEAEA;
+      
+            @media (--sm) {
+              width: 8px;
+              height: 8px;
+            }
+            &:not(:last-child) {
+              margin-right: 15px;
+              @media (--sm) {
+                margin-right: 10px;
+              }
+            }
+            &:first-child {
+              margin-left: 10px;
+            }
+            &:last-child {
+              margin-right: 10px;
+            }
+            &-active {
+              background: linear-gradient(180deg, #FFEF00 0%, #FFE200 100%);
+            }
+          }
+      
+        }
+      }
+      & .accent {
+        background: #EBF1F8;
+
+        & > .rozniza__head {
+          background: #FFC800;
+        }
+        & .btn-main {
+          background: #FFC800;
+        }
+      }
+
+    }
   }
   &__opt {
     position: relative;
@@ -766,6 +1060,67 @@ textarea::placeholder {
       padding: 0;
       max-width: calc(var(--content-width) - var(--p-vertical)*2);
       width: 80%;
+
+      @media (--xl) {
+        width: 100%;
+      }
+    }
+
+    &--swiper {
+      display: none;
+      @media (--lg) {
+        display: block;
+      }
+
+      & .opt__item {
+        border-right: none !important;
+        background-color: #FEFEFE;
+        border-radius: 5px;
+        padding: 25px 20px !important;
+      }
+      & .opt__nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 40px;
+        
+        &-prev, &-next {
+          position: relative;
+          height: 40px;
+          width: 40px;
+        }
+        &-pagination {
+          display: flex;
+          justify-content: center;
+          & > .swiper-pagination-bullet {
+            width: 12px;
+            height: 12px;
+            opacity: 1;
+            background-color: #EAEAEA;
+      
+            @media (--sm) {
+              width: 8px;
+              height: 8px;
+            }
+            &:not(:last-child) {
+              margin-right: 15px;
+              @media (--sm) {
+                margin-right: 10px;
+              }
+            }
+            &:first-child {
+              margin-left: 10px;
+            }
+            &:last-child {
+              margin-right: 10px;
+            }
+            &-active {
+              background: linear-gradient(180deg, #FFEF00 0%, #FFE200 100%);
+            }
+          }
+      
+        }
+      }
     }
   }
   & .opt {
@@ -777,6 +1132,13 @@ textarea::placeholder {
     max-width: calc(var(--content-width) - var(--p-vertical)*2);
     width: 80%;
 
+    @media (--xl) {
+      width: 100%;
+    }
+    @media (--lg) {
+      display: none;
+    }
+
     &__item { 
       width: 33%;
       text-align: center;
@@ -784,7 +1146,9 @@ textarea::placeholder {
       &:not(:last-child) {
         border-right: 1px solid #DEE2E7;
       }
-      
+      @media (--xl) {
+        padding: 0 20px;
+      }
 
       &-head {
         display: flex;
@@ -835,13 +1199,14 @@ textarea::placeholder {
           font-weight: 300;
           font-size: 14px;
           margin-bottom: 15px;
+          word-break: break-all;
 
           &::after {
             content: "";
             display: inline-block;
             width: 20px;
             height: 20px;
-            background: url(../img/ok.svg) center no-repeat;
+            background: url(../img/ok.svg) center/contain no-repeat;
           }
 
           &.off {
@@ -863,10 +1228,18 @@ textarea::placeholder {
   }
   &__head {
     width: 77%;
+    @media (--sm) {
+      width: 100%;
+    }
   }
 
   &__body { 
+    position: relative;
+    padding: 0 35px;
 
+    @media (--sm) {
+      padding: 0;
+    }
   }
 
   &__swiper {
@@ -879,16 +1252,33 @@ textarea::placeholder {
     display: flex;
     align-items: center;
     background: #F5F5F6;
+    height: auto !important;
     border-radius: 5px;
     padding: 40px 75px;
+
+    @media (--lg) {
+      padding: 30px 55px;
+      flex-direction: column;
+    }
+    @media (--xs) {
+      padding: 20px;
+    }
     &-left {
       width: 50%;
       padding-right: 10px;
+      @media (--lg) {
+        width: 100%;
+        margin-bottom: 20px;
+      }
 
       & > h3 {
         font-weight: 600;
         font-size: 28px;
         margin-bottom: 10px;
+
+        @media (--sm) {
+          font-size: 20px;
+        }
       }
       & > span {
         display: block;
@@ -912,6 +1302,9 @@ textarea::placeholder {
     }
     &-right {
       width: 50%;
+      @media (--sm) {
+        width: 100%;
+      }
 
       & > img {
         width: 100%;
@@ -920,6 +1313,29 @@ textarea::placeholder {
     
   }
   &__nav {
+    margin-top: 40px;
+    @media (--sm) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+  }
+  &__prev, &__next {
+    top: 38%;
+
+    @media (--sm) {
+      top: 0;
+      width: 39px !important;
+      height: 39px !important;
+      position: relative !important;
+    }
+  }
+  &__prev {
+    left: 0;
+  }
+  &__next {
+    right: 0;
   }
   &-pagination {
     display: flex;
@@ -930,8 +1346,25 @@ textarea::placeholder {
       opacity: 1;
       background-color: #EAEAEA;
 
+      @media (--sm) {
+        width: 8px;
+        height: 8px;
+      }
       &:not(:last-child) {
         margin-right: 15px;
+        @media (--sm) {
+          margin-right: 10px;
+        }
+      }
+      &:first-child {
+        @media (--sm) {
+          margin-left: 10px;
+        }
+      }
+      &:last-child {
+        @media (--sm) {
+          margin-right: 10px;
+        }
       }
       &-active {
         background: linear-gradient(180deg, #FFEF00 0%, #FFE200 100%);
@@ -966,15 +1399,34 @@ textarea::placeholder {
       width: 50%;
       padding: 100px 30px 0;
 
+      @media (--xl) {
+        padding: 50px 30px 0;
+      }
+      @media (--lg) {
+        width: 60%;
+      }
+      @media (--md) {
+        width: 100%;
+        text-align: center;
+        padding: 50px 0 0;
+      }
+
       & > h3 {
         font-weight: 700;
         font-size: 30px;
         line-height: 1.3;
         margin-bottom: 20px;
+
+        @media (--lg) {
+          font-size: 26px;
+        }
+        @media (--sm) {
+          font-size: 20px;
+        }
       }
 
       & > p {
-        font-size: 18px;
+        font-size: var(--fz-18);
         line-height: 1.5;
         margin-bottom: 40px;
       }
@@ -1002,11 +1454,21 @@ textarea::placeholder {
     &-img {
       position: relative;
       width: 50%;
+
+      @media (--lg) {
+        width: 40%;
+      }
+      @media (--md) {
+        display: none;
+      }
       & > img {
         position: absolute;
         bottom: 0;
         right: 0;
         width: 80%;
+        @media (--lg) {
+          width: 100%;
+        }
       }
     }
   }
@@ -1020,18 +1482,51 @@ textarea::placeholder {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
+    flex-wrap: wrap;
     padding: 30px 0;
     border-top:  1px solid #DDDFE0;
+    @media (--sm) {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
 
+    & > * {
+      @media (--sm) {
+        margin-bottom: 20px;
+      }
+      &:not(:last-child) {
+        margin-right: 15px;
+        @media (--sm) {
+          margin-right: 0;
+        }
+      }
+    }
+    & > img {
+      width: 120px;
+      @media (--lg) {
+        width: 100px;
+      }
+      @media (--sm) {
+        
+      }
+    }
     &-policy {
       font-weight: 500;
       font-size: 14px;
       line-height: 1.5;
       text-decoration: underline;
       color: var(--black);
+      @media (--lg) {
+        font-size: 12px;
+      }
     }
     &-razrab {
       font-size: 14px;
+      @media (--xl) {
+        order: 5;
+      }
       & a {
         color: #666666;
       }
@@ -1088,11 +1583,20 @@ textarea::placeholder {
     width: 70px;
     height: 70px;
     z-index: 10;
+    outline: none;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+
+    &:hover {
+      transform: scale(0.9);
+    }
   }
   &__next {
     transform: scale(-1);
+    &:hover {
+      transform: scale(-0.9);
+    }
   }
-
 }
 
 
@@ -1115,6 +1619,18 @@ textarea::placeholder {
   100% {
     opacity: 1;
     transform: translate(0);
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  } 
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
 
