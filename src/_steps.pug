@@ -8,7 +8,7 @@
   ]
 section.steps 
   .steps__container.container
-    .steps__head.head 
+    .steps__head.head#connect
       span Этапы внедрения системы
       h2 <b>Мы занимаемся созданием и внедрением</b> CRM-системы Битрикс24 на любом этапе 
     .steps__body 
@@ -16,4 +16,4 @@ section.steps
         div(class="steps__body-item" data-animate-on-scroll)
           h4= `0${index+1}`
           p!= item
-      button(type="button" class="btn btn-main btn--strelki") заказать настройку
+      a(href="#form" class="btn btn-main btn--strelki") заказать настройку

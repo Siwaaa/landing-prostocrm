@@ -427,10 +427,16 @@ textarea::placeholder {
         @media (--sm) {
           margin-top: 50px;
         }
+        @media (max-width: 375px) {
+          display: inline-block;
+        }
         
         & > b {
           font-weight: 700;
           margin-right: 10px;
+          @media (--xs) {
+            margin-right: 5px;
+          }
         }
         &::after {
           content: "";
@@ -444,7 +450,13 @@ textarea::placeholder {
             width: 38%;
           }
           @media (--xs) {
-            width: 43%;
+            width: 45%;
+          }
+          @media (max-width: 375px) {
+            position: relative;
+            width: 209px;
+            height: calc(var(--fz-h2) + 9px);
+            background: url(../img/bitrix24.svg) left/contain no-repeat;
           }
         }
       }
@@ -1468,6 +1480,11 @@ textarea::placeholder {
         & > a {
           font-weight: 400;
           color: var(--yelow);
+          transition: all .3s ease-in-out;
+
+          &:hover {
+            color: #FFC800;
+          }
         }
       }
     }
@@ -1538,8 +1555,13 @@ textarea::placeholder {
       line-height: 1.5;
       text-decoration: underline;
       color: var(--black);
+      transition: all .3s ease-in-out;
       @media (--lg) {
         font-size: 12px;
+      }
+
+      &:hover {
+        opacity: 0.7;
       }
     }
     &-razrab {
@@ -1549,6 +1571,11 @@ textarea::placeholder {
       }
       & a {
         color: #666666;
+        transition: all .3s ease-in-out;
+
+        &:hover {
+          color: var(--black);
+        }
       }
     }
     &-nav {
@@ -1567,6 +1594,11 @@ textarea::placeholder {
       & a {
         display: block;
         color: #666666;
+        transition: all .3s ease-in-out;
+
+        &:hover {
+          color: var(--black);
+        }
       }
     }
     &-contacts {
@@ -1585,6 +1617,11 @@ textarea::placeholder {
       & a {
         display: block;
         color: #666666;
+        transition: all .3s ease-in-out;
+
+        &:hover {
+          color: var(--black);
+        }
       }
       & > span {
         color: #666666;
