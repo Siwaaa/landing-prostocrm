@@ -1,12 +1,12 @@
 section.form 
   .form__container.container
     .form__body#form
-      form(data-animate-on-scroll)
+      form(method="post" action="send.php" data-animate-on-scroll)
         h3 Запишитесь на бесплатную онлайн консультацию, где:
         p мы поможем определиться с тарифом и подобрать нужный для вас вариант
-        input(type="text" name="" placeholder="Введите ваше имя" class="input")
-        input(type="tel" name="" placeholder="Введите номер телефона" class="input")
-        input(type="email" name="" placeholder="Введите ваш E-мейл"  class="input")
+        input(type="text" name="NAME" placeholder="Введите ваше имя" class="input")
+        input(type="tel" name="PHONE" placeholder="Введите номер телефона" class="input" required)
+        input(type="email" name="EMAIL" placeholder="Введите ваш E-мейл"  class="input")
         button(type="submit" class="btn btn-main ") записаться на консультацию
         span Нажимая на кнопку «Заказать консультацию», <br> вы принимаете <a href="/" target="_blank">политику конфиденциальности</a>
       .form__body-img 

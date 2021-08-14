@@ -115,6 +115,7 @@ textarea::placeholder {
 .btn {
   --fz-btn: 14px;
   display: inline-block;
+  text-align: center;
   font-weight: 600;
   line-height: 1;
   text-transform: uppercase;
@@ -1602,6 +1603,7 @@ textarea::placeholder {
       }
     }
     &-contacts {
+      max-width: 165px;
       display: flex;
       flex-direction: column;
       font-size: var(--fz);
@@ -1656,7 +1658,81 @@ textarea::placeholder {
   }
 }
 
+.thanks {
+  position: relative;
+  text-align: center;
+  & .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
 
+    & > img {
+      width: 120px;
+
+      @media (--md) {
+        width: 100px;
+      }
+      @media (--xs) {
+        width: 90px;
+      }
+    }
+    & > a {
+      display: flex;
+      align-items: center;
+      font-size: var(--fz-tel);
+      color: var(--black);
+      transition: all .3s ease-in-out;
+
+      &::before {
+        content: "";
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background: url(../img/tel.svg) center no-repeat;
+        margin-right: 15px;
+
+        @media (--xs) {
+          display: none;
+        }
+      }
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+  & main {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    & > img {
+      width: 100px;
+      object-fit: contain;
+      margin-bottom: 25px;
+    }
+    & h1 {
+      font-weight: bold;
+      font-size: var(--fz-h2);
+      line-height: 1.5;
+
+      color: var(--black);
+    }
+    & p {
+      font-weight: normal;
+      font-size: var(--fz-desc);
+      line-height: 1.5;
+
+      color: var(--black);
+    }
+  }
+}
 
 
 /* Animation */
