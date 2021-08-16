@@ -1,6 +1,6 @@
 <?php 
   // формируем URL, на который будем отправлять запрос в битрикс24
-	$queryURL = "https://prostoprocrm.bitrix24.ru/rest/76/x64yy69l3yy1r010/crm.lead.add.json";	
+	$queryURL = "https://prostoprocrm.bitrix24.ru/rest/76/hqk3qylgxsjv9o3q/crm.lead.add.json";	
 
   //собираем данные из формы
   $sPhone = htmlspecialchars($_POST["PHONE"]);
@@ -42,7 +42,7 @@
     exit();
   }elseif(!empty($result['error_description'])){
      json_encode(['message' => 'Lead not added: '.$result['error_description']]);
-     echo "Заявка не отправлена";
+     echo "Заявка не отправлена".$result['error_description'];
   }else{
      json_encode(['message' => 'Lead not added']);
      echo "Заявка не отправлена";
