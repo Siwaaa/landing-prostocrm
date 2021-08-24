@@ -18,6 +18,7 @@
 			"NAME" => $sName,	// имя
 			"EMAIL" => $arEmail,	// email
 			"PHONE" => $arPhone, // телефон
+			"ASSIGNED_BY_ID" => 1, // связь с ответственным
 		),
 		'params' => array("REGISTER_SONET_EVENT" => "Y")	// Y = произвести регистрацию события добавления лида в живой ленте. Дополнительно будет отправлено уведомление ответственному за лид.	
 	));
@@ -42,7 +43,7 @@
     exit();
   }elseif(!empty($result['error_description'])){
      json_encode(['message' => 'Lead not added: '.$result['error_description']]);
-     echo "Заявка не отправлена".$result['error_description'];
+     echo "Заявка не отправлена - ".$result['error_description'];
   }else{
      json_encode(['message' => 'Lead not added']);
      echo "Заявка не отправлена";
